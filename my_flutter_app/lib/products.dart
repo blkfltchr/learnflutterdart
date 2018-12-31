@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import './pages/product.dart';
 
 class Products extends StatelessWidget {
-  final List<String> products;
+  final List<Map<String, String>> products;
 
   Products([this.products = const []]);
 
@@ -11,8 +11,8 @@ class Products extends StatelessWidget {
     return Card(
       child: Column(
         children: <Widget>[
-          Image.asset('assets/food.jpg'),
-          Text(products[index]),
+          Image.asset(products[index]['imageUrl']),
+          Text(products[index]['title']),
           ButtonBar(
             alignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -21,7 +21,9 @@ class Products extends StatelessWidget {
                 onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ProductPage(),
+                        builder: (context) => ProductPage(
+                            products[index]['title'],
+                            products[index]['imageUrl']),
                       ),
                     ),
               )
@@ -50,31 +52,3 @@ class Products extends StatelessWidget {
     return _buildProductList();
   }
 }
-
-// Conditional rendering v1
-//
-// Widget build(BuildContext context) {
-//     return products.length > 0
-//         ? ListView.builder(
-//             itemBuilder: _buildProductItem,
-//             itemCount: products.length,
-//           )
-//         : Center(
-//             child: Text('No products found...'),
-//           );
-//   }
-
-// Conditional rendering v2
-//
-// Widget build(BuildContext context) {
-//     Widget productCard = Center(
-//       child: Text('No products found...'),
-//     );
-//     if (products.length > 0) {
-//       productCard = ListView.builder(
-//         itemBuilder: _buildProductItem,
-//         itemCount: products.length,
-//       );
-//     }
-//     return productCard;
-//   }
