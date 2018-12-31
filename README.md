@@ -6,3 +6,5 @@ Contents:
 - [x] `/my_first_app` - the most basic flutter app for testing iOS and Android emulators
 
 - [x] `/my_flutter_app` - the main app we'll be working on throughout the course
+
+- [x] `/widgets_basic_assignment_problem` - a simple button that adds text (the first assignment from the course)
